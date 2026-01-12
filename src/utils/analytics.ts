@@ -236,7 +236,12 @@ class Analytics {
   exportData(): {
     events: AnalyticsEvent[];
     pageViews: PageViewEvent[];
-    summary: ReturnType<typeof this.getSummary>;
+    summary: {
+      deviceType: string;
+      eventsCount: number;
+      pageViewsCount: number;
+      sessionDuration: number;
+    };
   } {
     return {
       events: this.events,
