@@ -11,8 +11,10 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { App } from './App';
+import { AnalyticsProvider } from './components/AnalyticsProvider';
 import { getConfig } from './config';
 import './mobile.css';
+import { registerServiceWorker } from './registerServiceWorker';
 
 const medplum = new MedplumClient({
   onUnauthenticated: () => (window.location.href = '/'),
@@ -38,6 +40,12 @@ const theme = createTheme({
   },
 });
 
+// Register service worker for PWA support
+registerServiceWorker({
+  onSuccess: () => console.log('[PWA] Content cached for offline use'),
+  onUpdate: () => console.log('[PWA] New content available; please refresh'),
+});
+
 const container = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(container);
 root.render(
@@ -45,8 +53,10 @@ root.render(
     <BrowserRouter>
       <MedplumProvider medplum={medplum}>
         <MantineProvider theme={theme}>
-          <Notifications />
-          <App />
+          <AnalyticsProvider>
+            <Notifications />
+            <App />
+          </AnalyticsProvider>
         </MantineProvider>
       </MedplumProvider>
     </BrowserRouter>

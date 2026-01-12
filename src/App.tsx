@@ -10,20 +10,28 @@ import {
   IconRobot,
   IconUser,
 } from '@tabler/icons-react';
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import type { JSX } from 'react';
 import { Route, Routes } from 'react-router';
-import { EncounterPage } from './pages/EncounterPage';
-import { LandingPage } from './pages/LandingPage';
-import { PatientPage } from './pages/PatientPage';
-import { ResourcePage } from './pages/ResourcePage';
-import { SearchPage } from './pages/SearchPage';
-import { SignInPage } from './pages/SignInPage';
-import { UploadDataPage } from './pages/UploadDataPage';
+
+// Code-split routes for better performance
+const EncounterPage = lazy(() => import('./pages/EncounterPage').then((m) => ({ default: m.EncounterPage })));
+const LandingPage = lazy(() => import('./pages/LandingPage').then((m) => ({ default: m.LandingPage })));
+const PatientPage = lazy(() => import('./pages/PatientPage').then((m) => ({ default: m.PatientPage })));
+const ResourcePage = lazy(() => import('./pages/ResourcePage').then((m) => ({ default: m.ResourcePage })));
+const SearchPage = lazy(() => import('./pages/SearchPage').then((m) => ({ default: m.SearchPage })));
+const SignInPage = lazy(() => import('./pages/SignInPage').then((m) => ({ default: m.SignInPage })));
+const UploadDataPage = lazy(() => import('./pages/UploadDataPage').then((m) => ({ default: m.UploadDataPage })));
+
+// Import analytics hook
+import { usePageTracking } from './hooks/usePageTracking';
 
 export function App(): JSX.Element | null {
   const medplum = useMedplum();
   const profile = useMedplumProfile();
+
+  // Track page views automatically
+  usePageTracking();
 
   if (medplum.isLoading()) {
     return null;
