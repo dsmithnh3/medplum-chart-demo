@@ -1,19 +1,34 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
+import { Box } from '@mantine/core';
 import type { ChartData, ChartOptions } from 'chart.js';
 import { lazy, Suspense } from 'react';
 import type { ComponentType, JSX } from 'react';
 
 const lineChartOptions = {
   responsive: true,
+  maintainAspectRatio: true,
+  aspectRatio: window.innerWidth < 768 ? 1 : 2,
   scales: {
     y: {
       min: 0,
+    },
+    x: {
+      ticks: {
+        maxRotation: window.innerWidth < 768 ? 45 : 0,
+        minRotation: window.innerWidth < 768 ? 45 : 0,
+      },
     },
   },
   plugins: {
     legend: {
       position: 'bottom' as const,
+      labels: {
+        padding: window.innerWidth < 768 ? 8 : 10,
+        font: {
+          size: window.innerWidth < 768 ? 10 : 12,
+        },
+      },
     },
   },
 };
@@ -35,10 +50,10 @@ const AsyncLine = lazy(async () => {
 
 export function LineChart({ chartData }: LineChartProps): JSX.Element {
   return (
-    <div className="my-5">
+    <Box my="md" w="100%">
       <Suspense fallback={<div>Loading...</div>}>
         <AsyncLine options={lineChartOptions} data={chartData} />
       </Suspense>
-    </div>
+    </Box>
   );
 }

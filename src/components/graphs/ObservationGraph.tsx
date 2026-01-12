@@ -55,13 +55,13 @@ export function ObservationGraph(props: ObservationGraphProps): JSX.Element {
 
   if (observations.length === 0) {
     return (
-      <Paper p="md" m="md">
+      <Paper p={{ base: 'xs', sm: 'sm', md: 'md' }} m={{ base: 'xs', sm: 'sm', md: 'md' }}>
         No {props.code.display?.toLowerCase()} observations
       </Paper>
     );
   }
 
-  return <div>{chartData && <LineChart chartData={chartData} />}</div>;
+  return <Paper p={{ base: 'xs', sm: 'sm', md: 'md' }} m={{ base: 'xs', sm: 'sm', md: 'md' }}>{chartData && <LineChart chartData={chartData} />}</Paper>;
 }
 
 /**

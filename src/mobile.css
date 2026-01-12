@@ -1,0 +1,173 @@
+/* SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors */
+/* SPDX-License-Identifier: Apache-2.0 */
+
+/* Mobile-specific styles for touch-friendly UI */
+/* Touch targets should be at least 44x44px (iOS) or 48x48px (Android) for accessibility */
+
+@media (max-width: 48em) {
+  /* Touch-friendly button sizes on mobile */
+  button,
+  .mantine-Button-root {
+    min-height: 44px;
+    min-width: 44px;
+    font-size: 16px;
+  }
+
+  /* Touch-friendly input fields */
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='tel'],
+  input[type='number'],
+  input[type='date'],
+  select,
+  textarea,
+  .mantine-Input-input,
+  .mantine-TextInput-input,
+  .mantine-Select-input,
+  .mantine-Textarea-input {
+    min-height: 44px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 12px;
+  }
+
+  /* Touch-friendly checkboxes and radio buttons */
+  input[type='checkbox'],
+  input[type='radio'],
+  .mantine-Checkbox-input,
+  .mantine-Radio-input {
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  /* Touch-friendly icon buttons */
+  .mantine-ActionIcon-root {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Increase spacing between clickable elements */
+  .mantine-Group-root > * {
+    margin: 4px;
+  }
+
+  /* Touch-friendly tabs */
+  .mantine-Tabs-tab {
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+
+  /* Touch-friendly links */
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 4px;
+  }
+
+  /* Adjust modals for mobile */
+  .mantine-Modal-content {
+    margin: 8px;
+    max-height: calc(100vh - 16px);
+  }
+
+  .mantine-Modal-header {
+    padding: 16px;
+  }
+
+  .mantine-Modal-body {
+    padding: 16px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  /* Stack form elements vertically on mobile */
+  .mantine-SimpleGrid-root {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Reduce padding on cards/papers for mobile */
+  .mantine-Paper-root {
+    padding: 12px;
+  }
+
+  /* Responsive table styles */
+  table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 8px 4px;
+  }
+
+  /* Full-width buttons on mobile for important actions */
+  .mantine-Modal-root button[type='submit'],
+  .mantine-Modal-root .mantine-Button-root[data-primary] {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  /* Improve readability */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  /* Better spacing for mobile content */
+  .mantine-Stack-root {
+    gap: 12px;
+  }
+}
+
+/* Extra small devices (phones in portrait, less than 36em) */
+@media (max-width: 36em) {
+  /* Even more compact on very small screens */
+  .mantine-Paper-root {
+    padding: 8px;
+    margin: 4px;
+  }
+
+  /* Smaller typography for tiny screens */
+  body {
+    font-size: 14px;
+  }
+
+  button,
+  .mantine-Button-root {
+    font-size: 14px;
+  }
+
+  /* Full-width inputs on very small screens */
+  input,
+  select,
+  textarea,
+  .mantine-Input-input {
+    width: 100%;
+  }
+}
+
+/* Landscape mobile devices */
+@media (max-height: 36em) and (orientation: landscape) {
+  /* Reduce vertical spacing in landscape */
+  .mantine-Modal-body {
+    max-height: calc(100vh - 60px);
+    padding: 8px 16px;
+  }
+
+  .mantine-Stack-root {
+    gap: 8px;
+  }
+}

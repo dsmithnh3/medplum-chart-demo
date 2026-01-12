@@ -29,10 +29,10 @@ export function PatientPage(): JSX.Element {
 
   return (
     <Grid>
-      <Grid.Col span={4}>
+      <Grid.Col span={{ base: 12, sm: 12, md: 4 }}>
         <PatientSummary patient={patient} />
       </Grid.Col>
-      <Grid.Col span={8}>
+      <Grid.Col span={{ base: 12, sm: 12, md: 8 }}>
         <PatientDetails patient={patient} onChange={onPatientChange} />
       </Grid.Col>
     </Grid>

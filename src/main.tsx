@@ -12,6 +12,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { App } from './App';
 import { getConfig } from './config';
+import './mobile.css';
 
 const medplum = new MedplumClient({
   onUnauthenticated: () => (window.location.href = '/'),
