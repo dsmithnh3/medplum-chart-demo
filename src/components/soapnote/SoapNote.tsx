@@ -50,7 +50,7 @@ export function SoapNote(): JSX.Element {
   }
 
   return (
-    <Box w="37.5%">
+    <Box w={{ base: '100%', sm: '100%', md: '50%', lg: '37.5%' }}>
       <Document>
         <QuestionnaireForm questionnaire={questionnaire} onSubmit={!submitted ? handleSubmit : console.log} />
 

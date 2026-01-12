@@ -48,7 +48,7 @@ export function SearchPage(): JSX.Element {
   }
 
   return (
-    <Paper shadow="xs" m="md" p="xs" className={classes.paper}>
+    <Paper shadow="xs" m={{ base: 'xs', sm: 'sm', md: 'md' }} p={{ base: 'xs', sm: 'sm', md: 'xs' }} className={classes.paper}>
       <CreateEncounter opened={opened} handlers={handlers} />
       <SearchControl
         checkboxesEnabled={false}

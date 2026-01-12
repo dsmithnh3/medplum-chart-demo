@@ -66,7 +66,13 @@ export function EditType(props: EditTypeProps): JSX.Element {
       <Button fullWidth onClick={handlers.open}>
         Edit Encounter Type
       </Button>
-      <Modal opened={opened} onClose={handlers.close}>
+      <Modal
+        opened={opened}
+        onClose={handlers.close}
+        size="md"
+        fullScreen={window.innerWidth < 768}
+        title="Edit Encounter Type"
+      >
         <QuestionnaireForm questionnaire={editTypeQuestionnaire} onSubmit={handleQuestionnaireSubmit} />
       </Modal>
     </div>

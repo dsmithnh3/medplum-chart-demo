@@ -47,15 +47,15 @@ export function EncounterPage(): JSX.Element {
     <Paper>
       <EncounterHeader encounter={encounter} patient={patient} />
       <Grid>
-        <Grid.Col span={4}>
+        <Grid.Col span={{ base: 12, sm: 12, md: 4 }}>
           <Document>
             <PatientSummary patient={patientReference} />
           </Document>
         </Grid.Col>
-        <Grid.Col span={5}>
+        <Grid.Col span={{ base: 12, sm: 12, md: 5 }}>
           <EncounterDetails encounter={encounter} />
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col span={{ base: 12, sm: 12, md: 3 }}>
           <Document p="xs">
             <EncounterActions encounter={encounter} onChange={handleEncounterChange} />
           </Document>

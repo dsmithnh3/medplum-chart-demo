@@ -97,8 +97,13 @@ export function CreateEncounter({ opened, handlers }: CreateEncounterProps): JSX
   }
 
   return (
-    <Modal opened={opened} onClose={handlers.close}>
-      <p>Create an Encounter</p>
+    <Modal
+      opened={opened}
+      onClose={handlers.close}
+      size="lg"
+      fullScreen={window.innerWidth < 768}
+      title="Create an Encounter"
+    >
       <QuestionnaireForm questionnaire={createEncounterQuestionnaire} onSubmit={handleQuestionnaireSubmit} />
     </Modal>
   );
